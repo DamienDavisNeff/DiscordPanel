@@ -19,13 +19,23 @@ function GetValues() {
     var footer = document.getElementById('Footer').value; // gets footer title
     var footerImage = document.getElementById('FooterImageURL').value; // gets footer image url
 
-    var override = false; // if public, set to false
+    // gets color from values
+    var RedValue = parseInt(document.getElementById('Red').value);
+    var GreenValue = parseInt(document.getElementById('Green').value);
+    var BlueValue = parseInt(document.getElementById('Blue').value);
+    // converts RGB to APPRX. DECIMAL
+    var colorsTotal = parseInt((RedValue * 65536) + (GreenValue * 256) + BlueValue);
+
+    console.log('Color Value: Red ' + RedValue + ' Blue ' + BlueValue + ' Green ' + GreenValue); // debugging console
+    console.log('Color Value (DECIMAL): ' + colorsTotal); // debugging console
+
+    var override = true; // if public, set to false
     if(override == true) {
         // if public make sure these variables are set to nothing
         // overrides the url
         url = "";
         author = ""; // overrides the author name
-        authorURL = ""; // overrides the author url
+        authorURL = "/"; // overrides the author url
         authorImageURL = ""; // overrides the author image
 
         console.log('Override is enabled, some values have been overwritten.'); // debugging console
@@ -36,7 +46,7 @@ function GetValues() {
     // checks to make sure the url is not empty
     if(url == "") {
         // if it is, gives public error code
-        document.getElementById('results').innerHTML = "Error Code S1: Must Provide Webhook URL";
+        document.getElementById('Results').innerHTML = "Error Code S1: Must Provide Webhook URL";
         console.log('ERROR: Code S1: Must Provide Webhook Link'); // debugging console
         return; // if there is no url, stops code execution
     }
@@ -44,11 +54,11 @@ function GetValues() {
     console.log("URL is not NULL, continuing."); // debugging console
 
     // runs a different function with all needed values plugged in (creates json)
-    CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL,authorImageURL,footer,footerImage);
+    CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL,authorImageURL,footer,footerImage,colorsTotal);
 }
 
 // runs at end of button press, and creates json file
-function CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL,authorImageURL,footer,footerImage) {
+function CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL,authorImageURL,footer,footerImage,colorsTotal) {
 
     console.log('Creating JSON File'); // debugging console
 
@@ -60,6 +70,7 @@ function CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL
                 "type":"rich",
                 "title":"`+title+`",
                 "description":"`+description+`",
+                "color":"`+colorsTotal+`",
                 "image": {
                     "url":"`+imageURL+`",
                     "height":"0",
@@ -123,4 +134,22 @@ function SendWebhook(url,data) {
         }
     }
 
+}
+
+// updates background color live
+function ColorChanged() {
+    var Red = parseInt(document.getElementById('Red').value);
+    var Green = parseInt(document.getElementById('Green').value);
+    var Blue = parseInt(document.getElementById('Blue').value);
+
+    var Color = parseInt((Red * 65536) + (Green * 256) + Blue);
+    
+    console.log('Color Value: Red ' + Red + ' Blue ' + Blue + ' Green ' + Green);
+    console.log('Color Value (DECIMAL): ' + Color);
+
+    document.getElementById('RedText').innerHTML = Red;
+    document.getElementById('GreenText').innerHTML = Green;
+    document.getElementById('BlueText').innerHTML = Blue;
+
+    document.getElementById('ColorChange').style.backgroundColor = "rgb("+Red+","+Green+","+Blue+")";
 }

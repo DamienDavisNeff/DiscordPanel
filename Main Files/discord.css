@@ -23,7 +23,7 @@ input {
     margin: auto;
 }
   
-#middle {
+#middle,.middle {
     display: flex;
     align-self: flex-start;
     justify-content: center;
@@ -41,4 +41,10 @@ button {
     font-family: "Noto Sans", arial;
     margin-top: 0px;
     margin-bottom: 5px;
-}  
+} 
+
+.colorText {
+    font-family: "Noto Sans", arial;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
