@@ -54,7 +54,7 @@ function CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL
 
     // creates json file with all variables plugged into it
     let data = `{
-        "content":"**Announcement** @everyone",
+        "content":"@everyone",
         "embeds": [
             {
                 "type":"rich",
