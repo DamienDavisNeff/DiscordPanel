@@ -1,0 +1,44 @@
+html {
+    background-image: linear-gradient(rgba(255,255,255,255),rgba(0,0,0,255));
+    font-family: "Noto Sans", arial;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+  
+#titleImage {
+    min-width: 10%;
+    width: 10%;
+}
+  
+input {
+    text-align: center;
+    font-family: "Noto Sans", arial;
+}
+  
+#options {
+    min-width: 400px;
+    width: 50%;
+    border: 3px solid black;
+    background-color: white;
+    margin: auto;
+}
+  
+#middle {
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+}
+  
+button {
+    border: 3px solid black;
+    min-width: 30%;
+    width: 50.2%;
+    font-size: 300%;
+    font-family: "Noto Sans", arial;
+}
+  
+.buttonText {
+    font-family: "Noto Sans", arial;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}  
