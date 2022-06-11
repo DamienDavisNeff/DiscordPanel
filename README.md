@@ -4,6 +4,8 @@ This is a discord panel made for sending embeds through a webhook.
 ## How to use ##
 In order to use this, you have two options, you can either edit the code to use 'Override Mode' where you can add a permanent webhook link (useful if you are using only one webhook & don't  plan on changing it) as well as permanent author information, in case you are the only one using it. If you do not want to use override mode, you don't have to worry about editing the code, but you do have to manually put in a webhook link every time.
 
+For proper use, all files included must be included _in the same directory._
+
 ### Override Mode ###
 To enable override mode:
 - Open the javascript file included in this project (`discord.js`)
