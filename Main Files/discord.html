@@ -1,0 +1,56 @@
+<html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <!-- MAIN SCRIPT -->
+    <script type="text/javascript" src="discord.js"></script>
+    <!-- STYLE & PAGE DESIGN -->
+    <title>Discord Announcement Panel</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+    <link href="discord.css" rel="stylesheet">
+    <link href="Discord.png" type="image/x-icon" rel="icon">
+  </head>
+  <body>
+    <!-- HEADER -->
+    <span id="middle">
+        <img src="Discord.png" style="margin-top:5%;margin-bottom:5%;" id="titleImage">
+    </span>
+    <!-- WEBHOOK OPTIONS -->
+    <div id="options">
+        <!-- LINK TO WEBHOOK-->
+        <span id="middle">
+            <input id="Webhook" placeholder="Webhook Link" style="width: 100%">
+        </span>
+        <!-- MAIN EMBED INFORMATION -->
+        <span id="middle">
+            <input id="Title" placeholder="Embed Title" style="width: 23%">
+            <input id="Description" placeholder="Embed Description" style="width: 77%">
+        </span>
+        <!-- AUTHOR INFORMATION -->
+        <span id="middle">
+            <input id="AuthorName" placeholder="Author Name" style="width: 23%">
+            <input id="AuthorURL" placeholder="Author URL" style="width: 30%">
+            <input id="AuthorImageURL" placeholder="Author Image URL" style="width: 47%">
+        </span>
+        <!-- IMAGE INFORMATION -->
+        <span id="middle">
+            <input id="ImageURL" placeholder="Embed Image URL" style="width: 100%">
+        </span>
+        <!-- THUMBNAIL INFORMATION -->
+        <span id="middle">
+            <input id="ThumbnailURL" placeholder="Embed Thumbnail URL" style="width: 100%">
+        </span>
+        <!-- FOOTER INFORMATION -->
+        <span id="middle" style="margin-bottom: 0%;">
+            <input id="Footer" placeholder="Footer Title" style="width: 50%">
+            <input id="FooterImageURL" placeholder="Footer Image URL" style="width: 50%">
+        </span>
+    </div>
+    <br>
+    <!-- BUTTON TO SEND -->
+    <span id="middle">
+        <button onclick="GetValues()"><p class="buttonText">Send Message</p></button>
+    </span>
+    <!-- RESULTS, HIDDEN UNTIL SENT -->
+    <span id="middle">
+        <p id="Results"></p>
+    </span>
+</body></html>
