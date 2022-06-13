@@ -19,4 +19,15 @@ If you do not want to enable override mode:
 - Open the html file included in this project (`discord.html`) in your browser & use it
 - **Note:** At least one value must be filled in to send, make sure to send at least one value (not including the webhook URL). **You must provide a webhook link.**
 
+### Clear On Send ###
+By Default, Settings Are Cleared When A Message Is Sent. To Change This
+- Open the javascript file included in this project (`discord.js`)
+- Find the variable `clearOnSend` and change `true` to `false`
+By Default, Clear Confirmation Is Enabled (A Dialoug Will Appear To Avoid Accidental Clears). To Change This
+- Open the javascript file included in this project (`discord.js`)
+- Find the variable `confirmClear` and change `true` to `false`
+
+### Latest Version Update ###
+Changed options to be global variables, to help future me in adding new options & to help the user locate all settings
+
 <a href="https://www.github.com/DamienDavisNeff/DiscordPanel" target="_blank">Discord Panel</a> © 2022 by <a href="https://www.github.com/DamienDavisNeff" target="_blank">Damien DavisNeff</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>
