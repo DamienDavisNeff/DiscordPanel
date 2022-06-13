@@ -2,6 +2,11 @@
 // Put it here to avoid clutter
 var resultsLink = "https://discord.com/developers/docs/topics/opcodes-and-status-codes#http' target='_blank";
 
+// Options
+var confirmClear = true; // Should a confirmation box appear when clearing settings?
+var override = true; // Should settings be overriden, only for private use cases
+var clearOnSend = true; // Should settings be cleared after webhook is sent?
+
 // ran when the 'send message' button gets pressed
 function GetValues() {
 
@@ -29,7 +34,6 @@ function GetValues() {
     console.log('Color Value: Red ' + RedValue + ' Blue ' + BlueValue + ' Green ' + GreenValue); // debugging console
     console.log('Color Value (DECIMAL): ' + colorsTotal); // debugging console
 
-    var override = true; // if public, set to false
     if(override == true) {
         // if public make sure these variables are set to nothing
         // overrides the url
@@ -152,4 +156,39 @@ function ColorChanged() {
     document.getElementById('BlueText').innerHTML = Blue;
 
     document.getElementById('ColorChange').style.backgroundColor = "rgb("+Red+","+Green+","+Blue+")";
+}
+
+// clears values on button press    
+function ClearSettingsParse() {
+
+    console.log('Button Pressed, Checking For Clear')
+    if(confirmClear == true) {
+        console.log('Confirmation Required')
+        if(confirm("Are You Sure You Want To Clear Settings")) {
+            console.log('Confirmation = True, Proceeding')
+            ClearSettings();
+            return;
+        }
+        console.log('Confirmation = False, Cancelling')
+    } else {
+        console.log('Confirmation Not Required, Proceeding')
+        ClearSettings();
+        return;
+    }
+}
+
+function ClearSettings() {
+    console.log('Clearing Settings'); // debugging console
+
+    // clears all values, apart from color
+    document.getElementById('Webhook').value = "";
+    document.getElementById('Title').value + "";
+    document.getElementById('Description').value = "";
+    document.getElementById('ImageURL').value = "";
+    document.getElementById('ThumbnailURL').value = "";
+    document.getElementById('AuthorName').value = "";
+    document.getElementById('AuthorURL').value = "";
+    document.getElementById('AuthorImageURL').value = "";
+    document.getElementById('Footer').value = "";
+    document.getElementById('FooterImageURL').value = "";
 }
