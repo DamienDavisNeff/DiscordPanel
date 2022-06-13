@@ -29,6 +29,7 @@ By Default, Clear Confirmation Is Enabled (A Dialoug Will Appear To Avoid Accide
 - Find the variable `confirmClear` and change `true` to `false`
 
 ### Latest Version Update ###
-Changed options to be global variables, to help future me in adding new options & to help the user locate all settings
+Added the abiltity to change the decimal values instead of the RGB values, since it is the value that Discord natively uses.
+When changing this value, you'll notice jumps, as it rounds RGB values to the nearest integer, and recalculates the decimal value. **This is an intended feature.**
 
 <a href="https://www.github.com/DamienDavisNeff/DiscordPanel" target="_blank">Discord Panel</a> © 2022 by <a href="https://www.github.com/DamienDavisNeff" target="_blank">Damien DavisNeff</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>
