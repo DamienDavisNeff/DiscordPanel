@@ -4,7 +4,7 @@ var resultsLink = "https://discord.com/developers/docs/topics/opcodes-and-status
 
 // Options
 var confirmClear = true; // Should a confirmation box appear when clearing settings?
-var override = true; // Should settings be overriden, only for private use cases
+var override = false; // Should settings be overriden, only for private use cases
 var clearOnSend = true; // Should settings be cleared after webhook is sent?
 
 // ran when the 'send message' button gets pressed
@@ -36,10 +36,11 @@ function GetValues() {
 
     if(override == true) {
         // if public make sure these variables are set to nothing
+        // these values can be changed & swapped for other defaults
         // overrides the url
         url = "";
         author = ""; // overrides the author name
-        authorURL = "/"; // overrides the author url
+        authorURL = ""; // overrides the author url
         authorImageURL = ""; // overrides the author image
 
         console.log('Override is enabled, some values have been overwritten.'); // debugging console
@@ -132,6 +133,10 @@ function SendWebhook(url,data) {
         if (status == 204) { // checks if status was success
             // if it was, writes response with success tag
             document.getElementById('Results').innerHTML = "Success: Response Status: <a href='"+resultsLink+"' target='_blank'>" + status; + "</a>"
+            if(clearOnSend == true) {
+                console.log("Clear On Send Set To True, Clearing Settings");
+                ClearSettings();
+            }
         } else {
             // if it was not, writes response with error tag
             document.getElementById('Results').innerHTML = "Error: Response Status: <a href='"+resultsLink+"' target='_blank'>" + status; + "</a>"
@@ -144,20 +149,28 @@ function SendWebhook(url,data) {
 function ColorChanged() {
     console.log('Color Changed'); // debugging console
 
+    console.log('Updating Color Variables'); // debugging console
+
     var Red = parseInt(document.getElementById('Red').value); // sets color red to input
     var Green = parseInt(document.getElementById('Green').value); // sets color green to input
     var Blue = parseInt(document.getElementById('Blue').value); // sets color blue to input
+
+    console.log('Updating Input Fields'); // debugging console
 
     document.getElementById('RedInput').value = Red; // sets input red to actual value if slider changes
     document.getElementById('GreenInput').value = Green; // sets input green to actual value if slider changes
     document.getElementById('BlueInput').value = Blue; // sets input blue to actual value if slider changes
 
+    console.log('Calculating Decimal Value'); // debugging console
+
     var Color = parseInt((Red * 65536) + (Green * 256) + Blue); // calculates decimal value of rgb
     
-    console.log('Color Value: Red ' + Red + ' Blue ' + Blue + ' Green ' + Green); // debugging console
+    console.log('Color Value: Red ' + Red + ' Green ' + Green + ' Blue ' + Blue); // debugging console
     console.log('Color Value (DECIMAL): ' + Color); // debugging console
 
     document.getElementById('ColorChange').style.backgroundColor = "rgb("+Red+","+Green+","+Blue+")"; // changes background based on color
+    
+    document.getElementById('ColorDecimal').value = Color;
 }
 
 function ColorInputChanged() {
@@ -197,6 +210,38 @@ function ColorInputChanged() {
 
 }
 
+function ColorDecimalChanged() {
+
+    console.log('Decimal Input Changed');
+
+    console.log('Checking If In Range');
+
+    // LOCKS RANGE OF INPUT FROM 0 => 16777215
+    if(document.getElementById('ColorDecimal').value > 16777215) {
+        document.getElementById('ColorDecimal').value = 16777215;
+    } else if (document.getElementById('ColorDecimal').value < 0) {
+        document.getElementById('ColorDecimal').value = 0;
+    }
+
+    var ColorDecimal = document.getElementById('ColorDecimal').value; // gets decimal value
+
+    var Blue = parseInt(ColorDecimal / 65536); // calculates decimal value to blue
+    var Green = parseInt((ColorDecimal - Blue * 65536) / 256); // calculates decimal value to green
+    var Red = parseInt(ColorDecimal - Blue * 65536 - Green * 256); // calculates decimal value to red
+
+    console.log('RGB FROM DECIMAL: Red ' + Red + ' Green ' + Green + ' Blue ' + Blue);
+
+    document.getElementById('Red').value = Red;
+    document.getElementById('Green').value = Green;
+    document.getElementById('Blue').value = Blue;
+
+    console.log('Updating Color Inputs'); // debugging console
+
+    ColorChanged(); // runs color changed to update them
+
+    console.log('When changing decimal value, you may notice a jump, as it rounds nearest int for RGB values');
+}
+
 // clears values on button press    
 function ClearSettingsParse() {
 
@@ -221,7 +266,7 @@ function ClearSettings() {
 
     // clears all values, apart from color
     document.getElementById('Webhook').value = "";
-    document.getElementById('Title').value + "";
+    document.getElementById('Title').value = "";
     document.getElementById('Description').value = "";
     document.getElementById('ImageURL').value = "";
     document.getElementById('ThumbnailURL').value = "";
