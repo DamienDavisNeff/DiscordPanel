@@ -142,20 +142,53 @@ function SendWebhook(url,data) {
 
 // updates background color live
 function ColorChanged() {
-    var Red = parseInt(document.getElementById('Red').value);
-    var Green = parseInt(document.getElementById('Green').value);
-    var Blue = parseInt(document.getElementById('Blue').value);
+    console.log('Color Changed'); // debugging console
 
-    var Color = parseInt((Red * 65536) + (Green * 256) + Blue);
+    var Red = parseInt(document.getElementById('Red').value); // sets color red to input
+    var Green = parseInt(document.getElementById('Green').value); // sets color green to input
+    var Blue = parseInt(document.getElementById('Blue').value); // sets color blue to input
+
+    document.getElementById('RedInput').value = Red; // sets input red to actual value if slider changes
+    document.getElementById('GreenInput').value = Green; // sets input green to actual value if slider changes
+    document.getElementById('BlueInput').value = Blue; // sets input blue to actual value if slider changes
+
+    var Color = parseInt((Red * 65536) + (Green * 256) + Blue); // calculates decimal value of rgb
     
-    console.log('Color Value: Red ' + Red + ' Blue ' + Blue + ' Green ' + Green);
-    console.log('Color Value (DECIMAL): ' + Color);
+    console.log('Color Value: Red ' + Red + ' Blue ' + Blue + ' Green ' + Green); // debugging console
+    console.log('Color Value (DECIMAL): ' + Color); // debugging console
 
-    document.getElementById('RedText').innerHTML = Red;
-    document.getElementById('GreenText').innerHTML = Green;
-    document.getElementById('BlueText').innerHTML = Blue;
+    document.getElementById('ColorChange').style.backgroundColor = "rgb("+Red+","+Green+","+Blue+")"; // changes background based on color
+}
 
-    document.getElementById('ColorChange').style.backgroundColor = "rgb("+Red+","+Green+","+Blue+")";
+function ColorInputChanged() {
+
+    console.log('Color Input Changed'); // debugging console
+
+    // LOCKS RANGE OF INPUT FROM 0 => 255
+    if(document.getElementById('RedInput').value < 0) {
+        document.getElementById('RedInput').value = 0;
+    } else if (document.getElementById('RedInput').value > 255) {
+        document.getElementById('RedInput').value = 255;
+    }
+    // LOCKS RANGE OF INPUT FROM 0 => 255
+    if(document.getElementById('GreenInput').value < 0) {
+        document.getElementById('GreenInput').value = 0;
+    } else if (document.getElementById('GreenInput').value > 255) {
+        document.getElementById('GreenInput').value = 255;
+    }
+    // LOCKS RANGE OF INPUT FROM 0 => 255
+    if(document.getElementById('BlueInput').value < 0) {
+        document.getElementById('BlueInput').value = 0;
+    } else if (document.getElementById('BlueInput').value > 255) {
+        document.getElementById('BlueInput').value = 255;
+    }
+
+    document.getElementById('Red').value = document.getElementById('RedInput').value; // sets slider to input value if input changes
+    document.getElementById('Blue').value = document.getElementById('BlueInput').value; // sets slider to input value if input changes
+    document.getElementById('Green').value = document.getElementById('GreenInput').value; // sets slider to input value if input changes
+
+    ColorChanged(); // runs color change function to update it
+
 }
 
 // clears values on button press    

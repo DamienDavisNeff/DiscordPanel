@@ -47,15 +47,15 @@
         <span class="middle" id="ColorChange" style="margin-bottom: 0%; background-color: rgb(255,0,0)">
             <div id="RedDiv" style="width: 100%">
                 <input onchange="ColorChanged()" id="Red" type="range" value="255" min="0" max="255" style="width: 100%;">
-                <p class="ColorText" id="RedText" style="text-align: center">255</p>
+                <input onchange="ColorInputChanged()" id="RedInput" type="number" value="255" style="width: 100%">
             </div>
             <div id="GreenDiv" style="width: 100%">
                 <input onchange="ColorChanged()" id="Green" type="range" value="0" min="0" max="255" style="width: 100%">
-                <p class="ColorText" id="GreenText" style="text-align: center">0</p>
+                <input onchange="ColorInputChanged()" id="GreenInput" type="number" value="0" style="width: 100%">
             </div>
             <div id="BlueDiv" style="width: 100%">
                 <input onchange="ColorChanged()" id="Blue" type="range" value="0" min="0" max="255" style="width: 100%">
-                <p class="ColorText" id="BlueText" style="text-align: center">0</p>
+                <input onchange="ColorInputChanged()" id="BlueInput" type="number" value="0" style="width: 100%">
             </div>
         </span>
         <span id="middle" style="margin-bottom: 0%;">
