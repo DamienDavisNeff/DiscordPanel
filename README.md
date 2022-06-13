@@ -23,6 +23,7 @@ If you do not want to enable override mode:
 By Default, Settings Are Cleared When A Message Is Sent. To Change This
 - Open the javascript file included in this project (`discord.js`)
 - Find the variable `clearOnSend` and change `true` to `false`
+### Clear Confirmation ### 
 By Default, Clear Confirmation Is Enabled (A Dialoug Will Appear To Avoid Accidental Clears). To Change This
 - Open the javascript file included in this project (`discord.js`)
 - Find the variable `confirmClear` and change `true` to `false`
