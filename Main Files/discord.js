@@ -164,6 +164,8 @@ function ColorInputChanged() {
 
     console.log('Color Input Changed'); // debugging console
 
+    console.log('Checking If In Range');
+
     // LOCKS RANGE OF INPUT FROM 0 => 255
     if(document.getElementById('RedInput').value < 0) {
         document.getElementById('RedInput').value = 0;
@@ -183,9 +185,13 @@ function ColorInputChanged() {
         document.getElementById('BlueInput').value = 255;
     }
 
+    console.log('Changing Slider To Input Value'); // debugging console
+
     document.getElementById('Red').value = document.getElementById('RedInput').value; // sets slider to input value if input changes
     document.getElementById('Blue').value = document.getElementById('BlueInput').value; // sets slider to input value if input changes
     document.getElementById('Green').value = document.getElementById('GreenInput').value; // sets slider to input value if input changes
+
+    console.log('Updating Colors'); // debugging console
 
     ColorChanged(); // runs color change function to update it
 
