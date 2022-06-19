@@ -43,23 +43,8 @@
             <input id="Footer" placeholder="Footer Title" style="width: 50%">
             <input id="FooterImageURL" placeholder="Footer Image URL" style="width: 50%">
         </span>
-        <!-- COLOR INFORMATION -->
-        <span class="middle" id="ColorChange" style="margin-bottom: 0%; background-color: rgb(255,0,0)">
-            <div id="RedDiv" style="width: 100%">
-                <input onchange="ColorChanged()" id="Red" type="range" value="255" min="0" max="255" style="width: 100%;">
-                <input onchange="ColorInputChanged()" id="RedInput" type="number" value="255" style="width: 100%">
-            </div>
-            <div id="GreenDiv" style="width: 100%">
-                <input onchange="ColorChanged()" id="Green" type="range" value="0" min="0" max="255" style="width: 100%">
-                <input onchange="ColorInputChanged()" id="GreenInput" type="number" value="0" style="width: 100%">
-            </div>
-            <div id="BlueDiv" style="width: 100%">
-                <input onchange="ColorChanged()" id="Blue" type="range" value="0" min="0" max="255" style="width: 100%">
-                <input onchange="ColorInputChanged()" id="BlueInput" type="number" value="0" style="width: 100%">
-            </div>
-        </span>
-        <input onchange="ColorDecimalChanged()" id="ColorDecimal" type="number" value="16711680" style="width: 100%">        
-        <span id="middle" style="margin-bottom: 0%;">
+        <span id="middle" style="margin-bottom: 0%">
+            <input id="Color" type="Color" style="width: 100%;" value="#ff0000">
         </span>
     </div>
     <br>

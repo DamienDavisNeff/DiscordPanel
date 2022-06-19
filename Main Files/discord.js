@@ -24,15 +24,10 @@ function GetValues() {
     var footer = document.getElementById('Footer').value.replaceAll('"', "''"); // gets footer title
     var footerImage = document.getElementById('FooterImageURL').value.replaceAll('"', "''"); // gets footer image url
 
-    // gets color from values
-    var RedValue = parseInt(document.getElementById('Red').value);
-    var GreenValue = parseInt(document.getElementById('Green').value);
-    var BlueValue = parseInt(document.getElementById('Blue').value);
-    // converts RGB to APPRX. DECIMAL
-    var colorsTotal = parseInt((RedValue * 65536) + (GreenValue * 256) + BlueValue);
+    var color = document.getElementById('Color').value.toString().replaceAll('#',"");
+    color = parseInt(color,16);
 
-    console.log('Color Value: Red ' + RedValue + ' Blue ' + BlueValue + ' Green ' + GreenValue); // debugging console
-    console.log('Color Value (DECIMAL): ' + colorsTotal); // debugging console
+    console.log("Color: " + color);
 
     if(override == true) {
         // if public make sure these variables are set to nothing
@@ -59,7 +54,7 @@ function GetValues() {
     console.log("URL is not NULL, continuing."); // debugging console
 
     // runs a different function with all needed values plugged in (creates json)
-    CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL,authorImageURL,footer,footerImage,colorsTotal);
+    CreateJson(url,title,description,imageURL,thumbnailURL,author,authorURL,authorImageURL,footer,footerImage,color);
 }
 
 // runs at end of button press, and creates json file
