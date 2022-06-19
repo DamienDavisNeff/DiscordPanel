@@ -13,16 +13,16 @@ function GetValues() {
     console.log('Button Pressed, Finding Values.'); // debugging console
 
     // gets info from value
-    var url = document.getElementById('Webhook').value; // gets webhook url
-    var title = document.getElementById('Title').value; // gets title
-    var description = document.getElementById('Description').value; // gets description
-    var imageURL = document.getElementById('ImageURL').value; // gets image url
-    var thumbnailURL = document.getElementById('ThumbnailURL').value; // gets thumbnail url 
-    var author = document.getElementById('AuthorName').value; // gets author name
-    var authorURL = document.getElementById('AuthorURL').value; // gets author url
-    var authorImageURL = document.getElementById('AuthorImageURL').value; // gets author image url
-    var footer = document.getElementById('Footer').value; // gets footer title
-    var footerImage = document.getElementById('FooterImageURL').value; // gets footer image url
+    var url = document.getElementById('Webhook').value.replaceAll('"', "''"); // gets webhook url
+    var title = document.getElementById('Title').value.replaceAll('"', "''"); // gets title
+    var description = document.getElementById('Description').value.replaceAll('"', "''"); // gets description
+    var imageURL = document.getElementById('ImageURL').value.replaceAll('"', "''"); // gets image url
+    var thumbnailURL = document.getElementById('ThumbnailURL').value.replaceAll('"', "''"); // gets thumbnail url 
+    var author = document.getElementById('AuthorName').value.replaceAll('"', "''"); // gets author name
+    var authorURL = document.getElementById('AuthorURL').value.replaceAll('"', "''"); // gets author url
+    var authorImageURL = document.getElementById('AuthorImageURL').value.replaceAll('"', "''"); // gets author image url
+    var footer = document.getElementById('Footer').value.replaceAll('"', "''"); // gets footer title
+    var footerImage = document.getElementById('FooterImageURL').value.replaceAll('"', "''"); // gets footer image url
 
     // gets color from values
     var RedValue = parseInt(document.getElementById('Red').value);
